@@ -1,40 +1,20 @@
-# InfraLab
+# Infra Lab
 
-Projeto de laboratório desenvolvido para praticar administração de servidores Linux utilizando Debian 13.
+Laboratório de infraestrutura utilizando Docker, PostgreSQL, Nginx, Prometheus, Grafana e cAdvisor.
 
-## Objetivos
+## Objetivo
 
-- Administração de servidores Linux
-- Containerização com Docker
-- Banco de dados PostgreSQL
-- Reverse Proxy com Nginx
-- Versionamento com Git
-- Acesso remoto via SSH
-- Infraestrutura como código com Docker Compose
+Projeto desenvolvido para estudo de administração Linux, containers Docker, monitoramento e observabilidade.
 
-## Tecnologias
+## Arquitetura
 
 - Debian 13
 - Docker
 - Docker Compose
 - PostgreSQL 17
-- pgAdmin 4
+- pgAdmin
 - Nginx
-- Git
-- GitHub
-
-## Estrutura
-
-- PostgreSQL em container
-- pgAdmin para administração
-- Nginx como reverse proxy
-- Variáveis de ambiente utilizando `.env`
-
-## Próximas implementações
-
-- Monitoramento com Prometheus
+- Prometheus
+- Grafana
 - Node Exporter
-- Shell Scripts de backup
-- Hardening do servidor
-- Fail2ban
-- Firewall UFW
+- cAdvisor
