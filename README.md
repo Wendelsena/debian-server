@@ -2,6 +2,8 @@
 
 Ambiente de infraestrutura desenvolvido com Docker Compose para estudos e prática de administração Linux, banco de dados PostgreSQL, monitoramento e automação.
 
+<img src="screenshots/visao_geral.png" alt="Visão geral do sistema" width="800">
+
 ---
 
 ## Objetivo
