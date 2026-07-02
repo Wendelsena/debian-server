@@ -1,0 +1,13 @@
+# Variáveis de ambiente
+docker/.env
+
+# Backups
+backups/
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db

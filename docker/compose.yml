@@ -1,3 +1,5 @@
+name: infra-lab
+
 services:
 
   postgres:
@@ -92,6 +94,7 @@ services:
 
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
 
     networks:
       - infra-net
@@ -105,6 +108,32 @@ services:
       timeout: 5s
       retries: 3
 
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: alertmanager-lab
+    restart: unless-stopped
+
+    ports:
+      - "9093:9093"
+
+    volumes:
+      - ./alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+
+    command:
+      - "--config.file=/etc/alertmanager/alertmanager.yml"
+
+    networks:
+      - infra-net
+
+    depends_on:
+      - prometheus
+
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:9093/-/healthy"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
   grafana:
     image: grafana/grafana:latest
     container_name: grafana-lab
@@ -112,6 +141,9 @@ services:
 
     ports:
       - "3000:3000"
+
+    volumes:
+      - grafana_data:/var/lib/grafana
 
     networks:
       - infra-net
@@ -162,7 +194,14 @@ services:
 
 volumes:
   postgres_data:
+    external: true
+    name: postgres_postgres_data
 
+  grafana_data:
+    external: true
+    name: postgres_grafana_data
+
+  prometheus_data:
 
 networks:
   infra-net:
